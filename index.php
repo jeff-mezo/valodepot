@@ -19,16 +19,20 @@
         <div class="row w-auto bg-gray">
             <div class="col-lg-6 px-5 py-4">
                 <h2 class="color-valo sub-size">AGENTS</h2>
-                <div class="card bg-dark pt-3">
-                    <div class="row card-body justify-content-around">
+                <div class="agent-container bg-dark pt-3 mx-auto">
+
                         <?php
                             foreach ($agent_data as $row) {
                         ?>
                         <div class="agent">
-                            <a href="#"><img class="img-fluid" src="<?php echo $img; ?>" alt="<?php echo $row; ?>"><p class="text-center w-100"><?php echo $row[0]; ?></p></a>
+                            <a href="#" ><img class="agent-img mx-auto" src="<?php echo $row["img"];?>"  alt="<?php echo $row["agent_name"]; ?>"><p class="text-center w-100"><?php echo $row["agent_name"]; ?></p></a>
                         </div>
-                        <?php } ?>                
-                    </div>
+                        <?php 
+                            }
+                     ?>   
+                                
+               
+                    
                 </div>
             </div>
 

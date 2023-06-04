@@ -76,8 +76,8 @@ function get_agents($conn){
         die("Query Failed: " . mysqli_error($conn));
         header("location: ../../index.php?error=sqlerror");
     }
-    $data = mysqli_fetch_assoc($result);
-    //$agent_data = mysqli_fetch_all($result, MYSQLI_ASSOC);  // Fetch all the rows from the query result and store them in an associative array
+    //$data = mysqli_fetch_assoc($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);  // Fetch all the rows from the query result and store them in an associative array
     mysqli_free_result($result);  // Free the memory associated with the query result
     return $data;
 }
