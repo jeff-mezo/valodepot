@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100&family=Orbitron&display=swap');
+
+body {
+    overflow-x: hidden;
+}
+
+.btn-primary {
+    background-color: #b23845;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #d45a66;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.navbar-brand img {
+    max-height: 40px;
+  }
+
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-1 {
+    background-image: url(../../images/bg_img_01.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4em;
+    text-align: center;
+}
+
+h5, h4, h2 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.valo-logo {
+    width: 180px;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: rgb(197, 197, 197);
+}
+
+.font-p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: rgb(197, 197, 197);
+}
+
+.t-muted{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    color: rgb(164, 164, 164);
+}
+
+.bg-gray{
+    background-color: #393939;
+}
+
+.color-valo {
+    color: #ff4655;
+}
+
+.sub-size {
+    font-size: 3em;
+}
+
+.agent {
+    width: 170px;
+    margin: 0;
+}
+
+.weapon {
+    width: 220px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.forum {
+    margin: 15px;
+    min-height: 150px;
+    padding: 20px;
+    background-color: #393939;
+    border-radius: 15px;
+}
+
+.prof-pic {
+    max-height: 100px;
+}
+
+.prof-info {
+    margin-left: 15px;
+    min-width: 200px;
+}
+
+.prof-info > p {
+    font-family: 'Orbitron', sans-serif;;
+    font-size: 12px;
+}
+
+.prof {
+    display: flex;
+}
+
+.content {
+    margin-left: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    .prof {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .prof-pic {
+        max-height: 100px;
+        max-width: 100px;
+    }
+    
+    .prof-info {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+.signin-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+
+.bg-fade{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.close-button{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.profile-container {
+    height: 100%;
+}
+
+
