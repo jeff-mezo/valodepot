@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100&family=Orbitron&display=swap');
 
+:root {
+    --valocolor: #ff4655;
+}
+
+
 body {
     overflow-x: hidden;
 }
@@ -76,10 +81,16 @@ h5, h4, h2 {
     width: 180px;
 }
 
-p {
+p, li, dd {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     color: rgb(197, 197, 197);
+}
+
+dt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: var(--valocolor);
 }
 
 .font-p{
@@ -100,7 +111,7 @@ p {
 }
 
 .color-valo {
-    color: #ff4655;
+    color: var(--valocolor);
 }
 
 .sub-size {
@@ -204,5 +215,6 @@ a {
 .profile-container {
     height: 100%;
 }
+
 
 

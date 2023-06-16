@@ -25,7 +25,7 @@
                             foreach ($agent_data as $row) {
                         ?>
                         <div class="agent">
-                            <a href="#" ><img class="agent-img mx-auto" src="<?php echo $row["img"];?>"  alt="<?php echo $row["agent_name"]; ?>"><p class="text-center w-100"><?php echo $row["agent_name"]; ?></p></a>
+                            <a href="agents.php" ><img class="agent-img mx-auto" src="<?php echo $row["img"];?>"  alt="<?php echo $row["agent_name"]; ?>"><p class="text-center w-100"><?php echo $row["agent_name"]; ?></p></a>
                         </div>
                         <?php 
                             }
