@@ -14,7 +14,7 @@
         <div class="row w-auto">
             <div class="col-lg-12">
                 <div id="carouselExampleIndicators" class="carousel slide" style="min-height: 80vh !important;">
-                <div class="carousel-indicators">
+                <div class="carousel-indicators" style="margin-bottom: -10px;">
                     <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -36,7 +36,7 @@
                                     <img src="<?php echo $row["img"];?>" class="weapon-img img-fluid position-relative" alt="...">
                                 </div>
 
-                                <div class="agent-container bg-dark p-3 row" style="max-height: 320px; overflow-y: hidden !important;">
+                                <div class="agent-container bg-dark p-3 row" style="max-height: 350px; overflow-y: hidden !important;">
                                     <?php if($session_admin == 1) {?>
                                         <span class="edit-agent" data-agent-id="<?php echo $row["weapon_id"]; ?>"><i class="fa-solid fa-pencil" style="width: 20px;color: #ff4655; position: absolute; top: 15px; right: 15px;"></i></span>
                                         <span class="delete-agent" data-agent-id="<?php echo $row["weapon_id"]; ?>"><i class="fa-solid fa-trash-can" style="width: 20px; color: #ff4655; position: absolute; top: 15px; right: 42px;"></i></span>
@@ -53,6 +53,8 @@
                                         <dd><?php echo $row["fire_rate"];?></dd>
                                         <dt>Mobility: </dt>
                                         <dd><?php echo $row["mobility"];?></dd>
+                                        <dt>Magazine: </dt>
+                                        <dd><?php echo $row["magazine"];?></dd>
                                     </dl>
                                     
                                     <div class="agent-desc col-8 my-3">

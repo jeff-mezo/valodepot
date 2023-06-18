@@ -78,6 +78,15 @@ i {
     border-radius: 15px;
 }
 
+    .agent-desc > dl {
+        margin-bottom: 0;
+    }
+
+    .agent-desc > dd {
+        margin-top: -5px;
+        font-size: 15px;
+    }
+
 .agent-img {
     max-width: auto;
     height: 160px;
