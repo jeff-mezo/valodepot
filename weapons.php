@@ -38,8 +38,8 @@
 
                                 <div class="agent-container bg-dark p-3 row" style="max-height: 320px; overflow-y: hidden !important;">
                                     <?php if($session_admin == 1) {?>
-                                        <span class="edit-agent" data-agent-id="<?php echo $row["weapon_name"]; ?>"><i class="fa-solid fa-pencil" style="width: 20px;color: #ff4655; position: absolute; top: 15px; right: 15px;"></i></span>
-                                        <span class="delete-agent" data-agent-id="<?php echo $row["weapon_name"]; ?>"><i class="fa-solid fa-trash-can" style="width: 20px; color: #ff4655; position: absolute; top: 15px; right: 42px;"></i></span>
+                                        <span class="edit-agent" data-agent-id="<?php echo $row["weapon_id"]; ?>"><i class="fa-solid fa-pencil" style="width: 20px;color: #ff4655; position: absolute; top: 15px; right: 15px;"></i></span>
+                                        <span class="delete-agent" data-agent-id="<?php echo $row["weapon_id"]; ?>"><i class="fa-solid fa-trash-can" style="width: 20px; color: #ff4655; position: absolute; top: 15px; right: 42px;"></i></span>
                                     <?php } ?>
 
                                     <dl class="agent-desc col-4 my-3">
@@ -93,69 +93,89 @@
                     <!-- EDIT AND DELETE -->
                     <?php if($session_admin == 1) {?>
 
-                        <!-- DELETE -->
-                        <div class="weapon-delete-card" id="agent-delete-<?php echo $row["weapon_name"];?>" style="display: none;">
-                            <div class="bg-fade"></div>
-                            <span class="agent-delete-close delete-card-close" data-agent-id="<?php echo $row["weapon_name"];?>"><i class="fas fa-times" style="color: #ffffff"></i></span>
-                            <h5 class="color-valo">Delete Weapons</h5>
-                            <p>Are you sure you want to delete <?php echo $row["weapon_name"]; ?>?</p>
+                    <!-- DELETE -->
+                    <div class="weapon-delete-card" id="agent-delete-<?php echo $row["weapon_id"];?>" style="display: none;">
+                        <div class="bg-fade"></div>
+                        <span class="agent-delete-close delete-card-close" data-agent-id="<?php echo $row["weapon_id"];?>"><i class="fas fa-times" style="color: #ffffff"></i></span>
+                        <h5 class="color-valo">Delete Weapons</h5>
+                        <p>Are you sure you want to delete <?php echo $row["weapon_name"]; ?>?</p>
 
-                            <form action="" method="post">
-                                <input type="hidden" name="weapon_name" value="<?php echo $row["weapon_name"];?>">
-                                <button class="btn btn-primary mt-2 delete-card-close" type="button" name="deny" style="width: 60px;" data-agent-id="<?php echo $row["weapon_name"];?>">No</button>
-                                <button class="btn btn-primary mt-2" type="submit" name="confirm" >Confirm</button>
-                            </form>
-                        </div>
+                        <form action="assets/includes/deleteweapon.inc.php" method="post">
+                            <input type="hidden" name="weapon_id" value="<?php echo $row["weapon_id"];?>">
+                            <button class="btn btn-primary mt-2 delete-card-close" type="button" name="deny" style="width: 60px;" data-agent-id="<?php echo $row["weapon_id"];?>">No</button>
+                            <button class="btn btn-primary mt-2" type="submit" name="confirm" >Confirm</button>
+                        </form>
+                    </div>
 
 
-                        <!-- EDIT -->
-                        <div class="weapon-editor-card" id="agent-<?php echo $row["weapon_name"];?>" style="display: none;">
-                            <div class="bg-fade"></div>
-                            <span class="agent-edit-close" data-agent-id="<?php echo $row["weapon_name"];?>"><i class="fas fa-times" style="color: #ffffff"></i></span>
-                            <h4 class="color-valo">Edit Weapons</h4>
-                            <form action="" method="post">
-                                <div class="row">
-                                    <div class="col-8 row">
-                                        <div class="col-6 form-group">
-                                            <label class="font-p" for="agent_name">Agent Name:</label>
-                                            <input type="text" id="agent_name_<?php echo $row["weapon_name"];?>" name="agent_name" class="form-control" value="<?php echo $row["weapon_name"];?>" required>                  
-                                        </div>
-                                        <div class="col-6 form-group">
-                                            <label class="font-p" for="real_name">Real Name:</label>
-                                            <input type="text" id="real_name_<?php echo $row["weapon_name"];?>" name="real_name" class="form-control"  value="" required>
-                                        </div>
-                                        <div class="col-12 form-group">
-                                            <label class="font-p" for="description">Description:</label>
-                                            <textarea type="text" id="description_<?php echo $row["weapon_name"];?>" name="description" class="form-control" rows="4" required style="resize: vertical; max-height: 200px;"></textarea>
-                                        </div>
-                                        <div class="col-4 form-group">
-                                            <label class="font-p" for="origin">Origin:</label>
-                                            <input type="text" id="origin_<?php echo $row["weapon_name"];?>" name="origin" class="form-control" value="" required>
-                                        </div>
-                                        <div class="col-4 form-group">
-                                            <label class="font-p" for="gender">Gender:</label>
-                                            <input type="text" id="gender_" name="gender" class="form-control" value="" required>
-                                        </div>
-                                        <div class="col-4 form-group">
-                                            <label class="font-p" for="role">Role:</label>
-                                            <input type="text" id="role_" name="role" class="form-control" value="" required>
-                                        </div>
+                    <!-- EDIT -->
+                    <div class="weapon-editor-card" id="agent-<?php echo $row["weapon_id"];?>" style="display: none;">
+                        <div class="bg-fade"></div>
+                        <span class="agent-edit-close" data-agent-id="<?php echo $row["weapon_id"];?>"><i class="fas fa-times" style="color: #ffffff"></i></span>
+                        <h4 class="color-valo">Edit Weapons</h4>
+                        <form action="assets/includes/updateweapon.inc.php" method="post">
+                            <div class="row">
+                                <div class="col-8 row">
+                                    <div class="col-6 form-group">
+                                        <label class="font-p" for="weapon_name">Weapon Name:</label>
+                                        <input type="text" id="weapon_name_<?php echo $row["weapon_id"];?>" name="weapon_name" class="form-control" value="<?php echo $row["weapon_name"];?>" required>                  
                                     </div>
-                                    <div class="col-4 row">
-                                        <div class="col-12 image-preview">
-                                            <img class="weapon-preview-img mx-auto" src="<?php echo $row["img"];?>" alt="">
-                                            <span id="preview-img" style="position: absolute; right:10px; bottom:10px;"><i class="fa-solid fa-eye fa-lg" style="color: #ff4555;" style="width: 20px;"></i></span>
-                                        </div>
-                                        <div class="col-12 form-group">
-                                            <label class="font-p" for="img">Image URL:</label>
-                                            <input type="text" id="img_<?php echo $row["weapon_name"];?>" name="img" class="form-control" value="<?php echo $row["img"];?>" required>
-                                        </div>
+                                    <div class="col-6 form-group">
+                                        <label class="font-p" for="weapon_type">Weapon Type:</label>
+                                        <input type="text" id="weapon_type_<?php echo $row["weapon_id"];?>" name="weapon_type" class="form-control"  value="<?php echo $row["weapon_type"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="credits">Credits:</label>
+                                        <input type="text" id="credits_<?php echo $row["weapon_id"];?>" name="credits" class="form-control" value="<?php echo $row["credits"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="fire_mode">Fire Mode:</label>
+                                        <input type="text" id="fire_mode_<?php echo $row["weapon_id"];?>" name="fire_mode" class="form-control" value="<?php echo $row["fire_mode"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="fire_rate">Fire Rate:</label>
+                                        <input type="text" id="fire_rate_<?php echo $row["weapon_id"];?>" name="fire_rate" class="form-control" value="<?php echo $row["fire_rate"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="mobility">Mobility:</label>
+                                        <input type="text" id="mobility_<?php echo $row["weapon_id"];?>" name="mobility" class="form-control" value="<?php echo $row["mobility"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="magazine">Magazine:</label>
+                                        <input type="text" id="magazine_<?php echo $row["weapon_id"];?>" name="magazine" class="form-control" value="<?php echo $row["magazine"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="reload">Reload:</label>
+                                        <input type="text" id="reload_<?php echo $row["weapon_id"];?>" name="reload" class="form-control" value="<?php echo $row["reload"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="dam_head">Head Damage:</label>
+                                        <input type="text" id="dam_head_<?php echo $row["weapon_id"];?>" name="dam_head" class="form-control" value="<?php echo $row["dam_head"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="dam_body">Body Damage:</label>
+                                        <input type="text" id="dam_body_<?php echo $row["weapon_id"];?>" name="dam_body" class="form-control" value="<?php echo $row["dam_body"];?>" required>
+                                    </div>
+                                    <div class="col-4 form-group">
+                                        <label class="font-p" for="dam_leg">Leg Damage:</label>
+                                        <input type="text" id="dam_leg_<?php echo $row["weapon_id"];?>" name="dam_leg" class="form-control" value="<?php echo $row["dam_leg"];?>" required>
                                     </div>
                                 </div>
-                                <input type="hidden" name="weapon_name" value="<?php echo $row["weapon_name"];?>">
-                                <button name="submit" type="submit" class="btn btn-primary mt-2">Save</button>
-                            </form>
-                        </div>
+                                <div class="col-4 row">
+                                    <div class="col-12 image-preview">
+                                        <img class="weapon-preview-img mx-auto" src="<?php echo $row["img"];?>" alt="">
+                                        <span id="preview-img" style="position: absolute; right:10px; bottom:10px;"><i class="fa-solid fa-eye fa-lg" style="color: #ff4555;" style="width: 20px;"></i></span>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label class="font-p" for="img">Image URL:</label>
+                                        <input type="text" id="img_<?php echo $row["weapon_id"];?>" name="img" class="form-control" value="<?php echo $row["img"];?>" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="weapon_id" value="<?php echo $row["weapon_id"];?>">
+                            <button name="submit" type="submit" class="btn btn-primary mt-2">Save</button>
+                        </form>
+                    </div>
 
                         <?php } } ?>
 

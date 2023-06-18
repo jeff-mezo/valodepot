@@ -55,7 +55,7 @@
                                     </dl>
                                     
                                         <div class="agent-desc-abilities col-8 my-3">
-                                            <p class="color-valo mb-0">Abilities</p>
+                                            <p class="color-valo mb-0">Abilities<?php if($session_admin == 1) {?><i class="ability-delete-toggle fa-solid fa-trash-can ml-2" style="width: 20px; color: #ff4655;" data-agent-id="<?php echo $row["agent_id"];?>"></i><i class="ability-add-toggle fa-solid fa-plus ml-1" style="width: 20px; color: #ff4655;" data-agent-id="<?php echo $row["agent_id"];?>"></i><?php } ?></p>
                                             <p class="t-muted mt-0 mb-3">Click on the abilities to show description</p>
                                             
                                                 <div class="d-flex flex-wrap">
@@ -63,12 +63,18 @@
                                                     if($row['agent_id'] == $ability['agent_id']) {   
                                                     ?> 
                                                     <div class="ability-wrap">
-                                                            <div class="skill-card d-flex flex-column align-items-center cursor-pointer" style="margin-right: 1rem;">
+                                                            <div class="skill-card d-flex flex-column align-items-center cursor-pointer" style="margin-right: 1rem; max-height: 100px;">
                                                                 <img src="<?php echo $ability['icon']; ?> " alt="" style="max-width: 60px;">
                                                                 <p class="m-0"><?php echo ucwords(strtolower($ability['ability_name'])); ?></p>
                                                                 <p class="m-0" style="font-size: 12px; margin-top: -3px !important;"><?php echo $ability['type']; ?></p>
+
+                                                                
+
                                                             </div>
-                                                            
+                                                            <?php if($session_admin == 1) {?> 
+                                                            <i class="ability-delete-button fa-regular fa-circle-xmark mt-1 mx-auto" style="color: #ff4655; display: none; z-index:9999;" data-agent-name="<?php echo $ability["agent_name"];?>" data-ability-name="<?php echo $ability["ability_name"];?>"></i>
+                                                            <?php } ?>
+
                                                             <div class="ability-tooltip">
                                                                 <p class="ability-tooltip-content"><?php echo $ability['description']; ?></p>
                                                             </div>
@@ -97,6 +103,7 @@
                             </form>
                         </div>
 
+                        
                         <div class="agent-editor-card" id="agent-<?php echo $row["agent_id"];?>" style="display: none;">
                             <div class="bg-fade"></div>
                             <span class="agent-edit-close" data-agent-id="<?php echo $row["agent_id"];?>"><i class="fas fa-times" style="color: #ffffff"></i></span>
@@ -142,6 +149,45 @@
                                 </div>
                                 <input type="hidden" name="agent_id" value="<?php echo $row["agent_id"];?>">
                                 <button name="submit" type="submit" class="btn btn-primary mt-2">Save</button>
+                            </form>
+                        </div>
+
+                        <div class="ability-add-card" id="ability-add-<?php echo $row["agent_id"];?>" style="display: none;">
+                            <div class="bg-fade"></div>
+                            <span class="agent-delete-close delete-card-close" data-agent-id="<?php echo $row["agent_id"];?>"><i class="fas fa-times" style="color: #ffffff"></i></span>
+                            <h5 class="color-valo">Add Ability</h5>
+                            <p>Add ability for <?php echo $row["agent_name"]; ?></p>
+
+                            <form action="assets/includes/addability.inc.php" method="post">
+                                <input type="hidden" name="agent_name" value="<?php echo $row["agent_name"];?>">
+                                <input type="hidden" name="agent_id" value="<?php echo $row["agent_id"];?>">
+                                <div class="row">
+                                    <div class="col-8 row">
+                                        <div class="col-6 form-group">
+                                            <label class="font-p" for="ability_name">Ability Name:</label>
+                                            <input type="text" name="ability_name" class="form-control" required>                  
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <label class="font-p" for="type">Ability Type:</label>
+                                            <input type="text" name="type" class="form-control" required>                  
+                                        </div>
+                                        <div class="col-12 form-group">
+                                            <label class="font-p" for="description">Description:</label>
+                                            <textarea type="text" name="description" class="form-control" rows="4" required style="resize: vertical; max-height: 200px;"></textarea>         
+                                        </div>
+                                    </div>
+                                    <div class="col-4 row">
+                                        <div class="col-12 ability-preview">
+                                            <img class="ability-preview-img mx-auto" alt="">
+                                            <span id="preview-ability-img" style="position: absolute; right:10px; bottom:10px;"><i class="fa-solid fa-eye fa-lg" style="color: #ff4555;" style="width: 20px;"></i></span>
+                                        </div>
+                                        <div class="col-12 form-group">
+                                            <label class="font-p" for="img">Image URL:</label>
+                                            <input type="text" name="icon" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary mt-2" type="submit" name="submit" >Confirm</button>
                             </form>
                         </div>
                     

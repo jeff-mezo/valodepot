@@ -24,6 +24,8 @@
                     <p><?php echo $_SESSION['email']; ?></p>
                 </div>  
             </div>
+
+            <!-- ADMIN TOOLS -->
             <?php if($_SESSION['isAdmin'] == 1) {?>
                 <div class="card bg-dark mt-3 p-3" style="min-height: 100px;">
                     <h5 class="color-valo">Administrator Tools</h5>
@@ -31,6 +33,8 @@
                     <span class="d-flex"><p class="mb-1">Add Weapons</p><i class="fa-solid fa-circle-plus ml-2 mt-1 icon" id="add-weapon" style="color: #ff4655;"></i></span>
                 </div>
             <?php } ?>
+
+            
         </div>
         <div class="col-lg-9 px-2 py-4">
             <div class="card bg-dark" id="post-container" style="min-height: 500px;">
@@ -103,6 +107,8 @@
 </div>
 
 <?php if($_SESSION['isAdmin'] == 1) {?>
+
+    <!-- ADD AGENTS -->
     <div class="agent-editor-card" id="agent-editor-card" style="display: none;">
         <div class="bg-fade"></div>
         <span class=""><i class="agent-add-close fas fa-times" style="color: #ffffff"></i></span>
@@ -149,6 +155,76 @@
             <button name="submit" type="submit" class="btn btn-primary mt-2">Add</button>
         </form>
     </div>
+
+    <!-- ADD WEAPON -->
+    <div class="weapon-editor-card" id="weapon-editor-card" style="display: none;">
+        <div class="bg-fade"></div>
+        <span class=""><i class="weapon-add-close fas fa-times" style="color: #ffffff"></i></span>
+        <h4 class="color-valo">Add New Weapon</h4>
+        <form action="assets/includes/addweapon.inc.php" method="post">
+            <div class="row">
+                <div class="col-8 row">
+                    <div class="col-6 form-group">
+                        <label class="font-p" for="weapon_name">Weapon Name:</label>
+                        <input type="text" id="weapon_name" name="weapon_name" class="form-control" required>                  
+                    </div>
+                    <div class="col-6 form-group">
+                        <label class="font-p" for="weapon_type">Weapon Type:</label>
+                        <input type="text" id="weapon_type" name="weapon_type" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="credits">Credits:</label>
+                        <input type="text" id="credits" name="credits" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="fire_mode">Fire Mode:</label>
+                        <input type="text" id="fire_mode" name="fire_mode" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="fire_rate">Fire Rate:</label>
+                        <input type="text" id="fire_rate" name="fire_rate" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="mobility">Mobility:</label>
+                        <input type="text" id="mobility" name="mobility" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="magazine">Magazine:</label>
+                        <input type="text" id="magazine" name="magazine" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="reload">Reload:</label>
+                        <input type="text" id="reload" name="reload" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="dam_head">Head Damage:</label>
+                        <input type="text" id="dam_head" name="dam_head" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="dam_body">Body Damage:</label>
+                        <input type="text" id="dam_body" name="dam_body" class="form-control" required>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label class="font-p" for="dam_leg">Leg Damage:</label>
+                        <input type="text" id="dam_leg" name="dam_leg" class="form-control" required>
+                    </div>
+
+                </div>
+                <div class="col-4 row">
+                    <div class="col-12 image-preview">
+                        <img class="weapon-preview-img mx-auto" alt="">
+                        <span id="preview-img" style="position: absolute; right:10px; bottom:10px;"><i class="fa-solid fa-eye fa-lg" style="color: #ff4555;" style="width: 20px;"></i></span>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label class="font-p" for="img">Image URL:</label>
+                        <input type="text" id="img" name="img" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <button name="submit" type="submit" class="btn btn-primary mt-2">Add</button>
+        </form>
+    </div>
+
 <?php } ?>
 </div>
 

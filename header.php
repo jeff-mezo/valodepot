@@ -30,7 +30,7 @@
                     <a class="font-p mx-2" href="assets/includes/logout.inc.php">Log Out</a>
                 </div>
             <?php } else {   ?>        
-                <button id="open-button" class="open-button btn btn-primary text-dark position-absolute" style="right: 10px;"><i class="fa fa-sign-in" aria-hidden="true"></i> SIGN IN</button>
+                <button id="open-button" class="open-button btn btn-primary text-dark position-absolute" style="right: 10px; color:#ffffff!important;"><i class="fa fa-sign-in" aria-hidden="true"></i> SIGN IN</button>
             <?php } ?>
         </div>
     </nav>
@@ -93,7 +93,7 @@
                     <input type="password" id="password" name="password_rpt" class="form-control" required> -->
                 </div>
 
-                <p class="t-muted my-2">Existing User? <a href="#" class="sign-up-to-in">Sign Up</a></p>
+                <p class="t-muted my-2">Existing User? <a href="#" class="sign-up-to-in">Sign In</a></p>
                 <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "pwdnotmatch") { ?>
@@ -105,6 +105,6 @@
                 <?php   }
                     }         
                 ?>
-                <button name="submit" type="submit" class="btn btn-primary mt-2">Sign In</button>
+                <button name="submit" type="submit" class="btn btn-primary mt-2">Sign Up</button>
             </form>
         </div>

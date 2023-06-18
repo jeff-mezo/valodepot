@@ -209,4 +209,65 @@ function get_weapons($conn){
     return $data;
 }
 
-    
+function delete_ability($conn, $ability_name, $agent_name) {
+    $stmt = $conn->prepare("DELETE FROM abilities WHERE ability_name = ?");
+    $stmt->execute([$ability_name]);
+
+    if ($stmt->affected_rows > 0) {
+        header("location: ../../agents.php?name=$agent_name");
+        exit();
+    } else {
+        header("location: ../../index.php?error=dataerror");
+        exit();
+    }
+}
+
+function add_ability($conn, $agent_id, $agentName, $ability_name, $type, $icon, $description) {
+    $stmt = $conn->prepare("INSERT INTO abilities (agent_name, ability_name, type, icon, agent_id, description) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssis", $agentName, $ability_name, $type, $icon, $agent_id, $description);
+    $stmt->execute();
+
+    header("location: ../../agents.php?name=$agentName");
+    exit();
+}
+
+// JAMZE FUNCTIONS:
+
+function delete_weapons($conn, $weapon_id) {
+    $stmt = $conn->prepare("DELETE FROM weapons WHERE weapon_id = ?");
+    $stmt->bind_param("i", $weapon_id);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        header("location: ../../weapons.php?name=Classic");
+        exit();
+    } else {
+        header("location: ../../index.php?error=dataerror");
+        exit();
+    }
+}
+
+function update_weapons($conn, $weapon_id, $weapon_name, $weapon_type, $credits, $fire_mode, $fire_rate, $mobility, $magazine, $reload, $dam_head, $dam_body, $dam_leg, $img) {
+    $sql = "UPDATE weapons SET weapon_name =?, weapon_type =?, credits =?, fire_mode =?, fire_rate =?, mobility =?, magazine =?, reload =?, dam_head =?, dam_body =?, dam_leg =?, img =? WHERE weapon_id = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../../index.php?error=sqlerror");
+        exit();
+    } 
+
+    mysqli_stmt_bind_param($stmt, "ssssssssiiisi", $weapon_name, $weapon_type, $credits, $fire_mode, $fire_rate, $mobility, $magazine, $reload, $dam_head, $dam_body, $dam_leg, $img, $weapon_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../../weapons.php?name=$weapon_name");
+    exit();
+}
+
+function add_weapons($conn, $weaponName, $weaponType, $credits, $fireMode, $fireRate, $mobility, $magazine, $reload, $damHead, $damBody, $damLeg, $img) {
+    $stmt = $conn->prepare("INSERT INTO weapons (`weapon_name`, `weapon_type`, `credits`, `fire_mode`, `fire_rate`, `mobility`, `magazine`, `reload`, `dam_head`, `dam_body`, `dam_leg`, `img`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssiiis", $weaponName, $weaponType, $credits, $fireMode, $fireRate, $mobility, $magazine, $reload, $damHead, $damBody, $damLeg, $img);
+    $stmt->execute();
+
+    header("Location: ../../weapons.php?name=$weaponName");
+    exit();
+}
+

@@ -48,7 +48,11 @@ function delete_card_close($button) {
     //console.log('agent id: ' + $agent_id);
     $deletebox_id = "#agent-delete-" + $agent_id;
 
+    $ability_agent_id = $($button).data('agent-id');
+    $abilityaddbox_id = "#ability-add-" + $ability_agent_id;
+
     $($deletebox_id).hide();
+    $($abilityaddbox_id).hide();
 }
 
 
@@ -102,6 +106,8 @@ $(document).ready(function() {
         $('html, body').scrollTop(0);
     });
 
+    // DELETE POST
+
     $(document).on('click', '#post-container .delete-button', function() {
         var post_id = $(this).data('post-id');
         
@@ -110,6 +116,33 @@ $(document).ready(function() {
             url: 'assets/includes/postdelete.inc.php',
             method: 'POST',
             data: { post_id: post_id },
+            success: function(response) {
+                console.log(response);
+                location.reload(); // Reload the page
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+
+    // DELETE ABILITY
+
+    $(document).on('click', '.ability-delete-button', function() {
+        var agent_name = $(this).data('agent-name');
+        var ability_name = $(this).data('ability-name');
+
+        // console.log(agent_name);
+        // console.log(ability_name);
+
+        //Send an AJAX request to the PHP script
+        $.ajax({
+            url: 'assets/includes/deleteability.inc.php',
+            method: 'POST',
+            data: { 
+                ability_name: ability_name,
+                agent_name: agent_name
+            },
             success: function(response) {
                 console.log(response);
                 location.reload(); // Reload the page
@@ -186,6 +219,17 @@ $(document).ready(function() {
 
     });
 
+    $(document).on('click', '#preview-ability-img', function() {
+        var inputElement = $(this).closest('.col-4').find('input[name="icon"]').val();
+        var imgTag = $(this).closest('.col-4').find('img');
+
+        console.log(inputElement);
+        imgTag.attr('src', inputElement);
+
+    });
+
+    // ADMIN - ADD AGENT
+
     $('#add-agent').click(function() {
         console.log("add-agent opening");
 
@@ -197,6 +241,21 @@ $(document).ready(function() {
         console.log("add-agent closing");
 
         $('#agent-editor-card').hide();
+    });
+
+
+    // ADMIN - ADD WEAPONS
+    $('#add-weapon').click(function() {
+        console.log("add-agent opening");
+
+        $('#weapon-editor-card').show();
+        //console.log('done');
+    });
+
+    $('.weapon-add-close').click(function() { 
+        console.log("add-agent closing");
+
+        $('#weapon-editor-card').hide();
     });
 
     // ABILITITY TOOLTIP
@@ -220,6 +279,31 @@ $(document).ready(function() {
             // Hide all other tooltips
             $('.ability-tooltip').hide();
         });
+
+    // ABILITY DELETE
+
+    $(document).on('click', '.agent-container .ability-delete-toggle', function() {
+
+        $agent_id = $(this).data('agent-id');
+        //console.log('agent id: ' + $agent_id);
+        $abilities_class = ".ability-delete-button";
+
+        $($abilities_class).toggle();
+    
+    });
+
+    // ABILITY ADD
+
+        $(document).on('click', '.agent-container .ability-add-toggle', function() {
+
+            $agent_id = $(this).data('agent-id');
+            //console.log('agent id: ' + $agent_id);
+            $abilities_class = "#ability-add-" + $agent_id;
+
+            $($abilities_class).toggle();
+        
+        });
+
 
 });
 

@@ -143,6 +143,10 @@ p, li, dd {
     color: rgb(197, 197, 197);
 }
 
+button {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
 dt {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
@@ -264,7 +268,7 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(57, 57, 57, 0.96);
+    background-color: rgba(51, 51, 51, 1);
     min-width: 70vw;
     max-width: 100vw;
     max-height: 80vh;
@@ -279,7 +283,7 @@ a {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgba(57, 57, 57, 0.96);
+        background-color: rgba(51, 51, 51, 1);
         width: 350px;
         min-height: 20vh;
         padding: 20px;
@@ -293,8 +297,22 @@ a {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(57, 57, 57, 0.96);
+            background-color: rgba(51, 51, 51, 1);
             width: 350px;
+            min-height: 20vh;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+
+        .ability-add-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(51, 51, 51, 1);
+            width: 650px;
             min-height: 20vh;
             padding: 20px;
             border-radius: 5px;
@@ -326,6 +344,21 @@ a {
             margin: 0;
         }
 
+    .ability-preview {
+        position: relative;
+        background-color: rgba(57, 57, 57, 0.96);
+        border-radius: 15px;
+        width: 80%;
+        min-height: 100px;
+        max-height: 150px;
+    }
+        .ability-preview-img {
+            max-width : auto;
+            height: 100%;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
 
 .weapon-editor-card {
     position: fixed;
@@ -354,6 +387,7 @@ a {
     z-index: -1;
 }
 
+
 .close-button{
     position: absolute;
     top: 5px;
@@ -381,6 +415,13 @@ a {
         right: 15px;
         cursor: pointer;
     } 
+
+    .weapon-add-close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    }  
 
 .profile-container {
     height: 100%;
