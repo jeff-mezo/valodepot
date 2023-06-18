@@ -6,6 +6,8 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $password_rpt = $_POST["password_rpt"];
+    $isAdmin = $_POST['isAdmin'];
+    # $isAdmin = 1;
 
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
@@ -20,7 +22,7 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    create_user($conn, $username, $email, $password);
+    create_user($conn, $username, $email, $password, $isAdmin);
 
 } else {
     header("location: ../../index.php");

@@ -4,9 +4,40 @@
     --valocolor: #ff4655;
 }
 
+/* Costumized Scrollbar */
+::-webkit-scrollbar {
+    width: 3vh;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(73, 73, 73, 0.6);
+    border-radius: 10vh;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(82, 82, 82);
+    border-radius: 10vh;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: rgb(44, 44, 44);
+  }
+  
+  ::-webkit-scrollbar-track:hover {
+    background-color: rgb(54, 54, 54);
+  }
+
 
 body {
     overflow-x: hidden;
+}
+
+i {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -40,10 +71,10 @@ body {
 
 .agent-container {
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     justify-content: center;
     height: 500px;
-    overflow-x: hidden;
     border-radius: 15px;
 }
 
@@ -54,6 +85,31 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.weapon {
+    width: 800px;
+    max-height: 200px;
+    margin: 25px;
+    padding: 0px;
+}
+
+    .weapon-img {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    .weapon-index {
+        width: 170px;
+        max-height: 200px;
+        padding: 0px;
+    }
+        .weapon-img-index {
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+    
 
 .section-1 {
     background-image: url(../../images/bg_img_01.png);
@@ -109,6 +165,16 @@ dt {
 .bg-gray{
     background-color: #393939;
 }
+    .bg-gray-opac{
+        background-color: rgba(56, 56, 56,0.95);
+    }
+
+.bg-dark {
+    background-color: #2e2e2e!important;
+}
+    .bg-dark-opac{
+        background-color: rgba(46, 46, 46, 0.90)!important;
+    }
 
 .color-valo {
     color: var(--valocolor);
@@ -193,6 +259,89 @@ a {
     z-index: 9999;
 }
 
+.agent-editor-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(57, 57, 57, 0.96);
+    min-width: 70vw;
+    max-width: 100vw;
+    max-height: 80vh;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+    .agent-delete-card {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(57, 57, 57, 0.96);
+        width: 350px;
+        min-height: 20vh;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+    }
+
+        .weapon-delete-card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(57, 57, 57, 0.96);
+            width: 350px;
+            min-height: 20vh;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+
+    .image-preview {
+        position: relative;
+        background-color: rgba(57, 57, 57, 0.96);
+        border-radius: 15px;
+        width: 80%;
+        max-height: 325px;
+    }
+
+    .agent-preview-img {
+        max-width: auto;
+        height: 100%;
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+        .weapon-preview-img {
+            max-height : auto;
+            width: 100%;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+
+.weapon-editor-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(57, 57, 57, 0.96);
+    min-width: 70vw;
+    max-width: 100vw;
+    max-height: 80vh;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
 
 .bg-fade{
     position: absolute;
@@ -212,9 +361,65 @@ a {
     cursor: pointer;
 }
 
+    .agent-edit-close{
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        cursor: pointer;
+    }   
+
+    .agent-add-close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    }   
+
+    .agent-delete-close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    } 
+
 .profile-container {
     height: 100%;
 }
+
+/* POST MESSAGE */
+
+.add-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    scale: 110%;
+    cursor: pointer;
+}
+
+
+/* ABILITY TOOLTIP */
+.agent-desc-abilities {
+    overflow-y: visible;
+}
+
+
+.ability-tooltip {
+    display: none;
+    background-color: #565656;
+    border-radius: 4px;
+    padding: 5px;
+    top: 170px;
+    position: absolute;
+    z-index: 1;
+    transition: 0.3s ease-in-out; /* Add transition property */
+}
+
+    .ability-tooltip-content {
+        margin: 0;
+        font-size: 14px;
+    }
+
+
 
 
 

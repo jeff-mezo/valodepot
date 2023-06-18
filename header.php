@@ -11,8 +11,11 @@
     <title>ValoDepot</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="assets/js/main.js"></script>
 </head>
 <body>
@@ -27,7 +30,7 @@
                     <a class="font-p mx-2" href="assets/includes/logout.inc.php">Log Out</a>
                 </div>
             <?php } else {   ?>        
-                <button id="open-button" class="btn btn-primary text-dark position-absolute" style="right: 10px;"><i class="fa fa-sign-in" aria-hidden="true"></i> SIGN IN</button>
+                <button id="open-button" class="open-button btn btn-primary text-dark position-absolute" style="right: 10px;"><i class="fa fa-sign-in" aria-hidden="true"></i> SIGN IN</button>
             <?php } ?>
         </div>
     </nav>
@@ -81,7 +84,16 @@
                     <label class="font-p" for="password">Re-Enter Password:</label>
                     <input type="password" id="password" name="password_rpt" class="form-control" required>
                 </div>
-                <p class="t-muted my-2">Existing User? <a href="#" class="sign-up-to-in">Sign In</a></p>
+                <div class="form-group">
+                    <label class="font-p">
+                        <input type="radio" name="isAdmin" id="adminRadioButton"> Admin Account
+                    </label>
+                    <input type="hidden" name="isAdmin" value="0">
+                    <!-- <label class="font-p" for="password">Re-Enter Password:</label>
+                    <input type="password" id="password" name="password_rpt" class="form-control" required> -->
+                </div>
+
+                <p class="t-muted my-2">Existing User? <a href="#" class="sign-up-to-in">Sign Up</a></p>
                 <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "pwdnotmatch") { ?>
